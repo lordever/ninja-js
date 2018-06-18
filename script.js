@@ -1,19 +1,16 @@
-function isPrime(value) {
-    debugger;
-    if(!isPrime.answers) isPrime.answers = {};
-    if(!isPrime.answers[value] != null){
-        isPrime.answers[value];
-    }
-
-    var prime = value != 1; //единица неможет быть простым числом
-    for(var i = 2; i< value; i++){
-        if(value % i == 0){
-            prime = false;
-            break;
+function merge(root) {
+    for (var i = 0; i < arguments.length; i++) {
+        for (var key in arguments[i]) {
+            root[key] = arguments[i][key];
         }
     }
-    return isPrime.answers[value] = prime;
+    return root;
 }
 
-assert(isPrime(5), "5 is prime!");
-assert(isPrime.answers[5], "The answer was cached!");
+var merged = merge(
+    {name: "Batou"},
+    {city: "Niihama"}
+);
+
+assert(merged.name == "Batou", "The original name is intact.");
+assert(merged.city == "Niihama", "And the city has been copied over.");
